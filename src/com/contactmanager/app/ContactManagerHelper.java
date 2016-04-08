@@ -30,20 +30,7 @@ public class ContactManagerHelper implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
             // A SessionFactory is set up once for an application!
-            final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                    .configure() // configures settings from hibernate.cfg.xml
-                    .build();
-            System.out.println("registry: " + registry);
-            try {
-                sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
-                System.out.println("sessionFactory " + sessionFactory + " created");
-            }
-            catch (Exception e) {
-                // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
-                // so destroy it manually.
-                System.out.println("sessionFactory NOT created");
-                StandardServiceRegistryBuilder.destroy( registry );
-            }
+
     }
 
 
