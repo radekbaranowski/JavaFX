@@ -12,4 +12,5 @@ public interface ContactDAO {
     public List<Contact> listContacts();
     public void removeContact(Contact contact);
     public void updateContact(Contact contact);
+    public Contact findById(int id);
 }

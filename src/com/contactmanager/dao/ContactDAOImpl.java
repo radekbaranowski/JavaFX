@@ -2,6 +2,7 @@ package com.contactmanager.dao;
 
 import com.contactmanager.entity.Contact;
 import com.contactmanager.entity.HibernateUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
@@ -42,9 +43,23 @@ public class ContactDAOImpl implements ContactDAO {
     public void updateContact(Contact contact){
         Session session = HibernateUtil.openSession();
         session.beginTransaction();
+        System.out.println(contact);
         session.update(contact);
         session.getTransaction().commit();
         session.close();
+    };
+
+    @Override
+    public Contact findById(int id){
+        Session session = HibernateUtil.openSession();
+        session.beginTransaction();
+        Query   q = session.createQuery("from Contact where CONTACT_ID = :id");
+                q.setParameter("id",id);
+        List<Contact> list = q.list();
+        System.out.println("contacts retrieved: " + list.size());
+        session.getTransaction().commit();
+        session.close();
+        return !list.isEmpty() ? list.get(0) : null ;
     };
 
 }
