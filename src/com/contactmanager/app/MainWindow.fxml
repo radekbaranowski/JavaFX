@@ -25,5 +25,10 @@
       <TextField fx:id="nameInput1" layoutX="90.0" layoutY="265.0" prefHeight="33.0" prefWidth="244.0" promptText="first name" />
       <Separator layoutY="469.0" prefHeight="6.0" prefWidth="720.0" />
       <Label fx:id="statusLabel" layoutX="14.0" layoutY="478.0" prefHeight="21.0" prefWidth="276.0" />
+      <Button id="btnUpdate" fx:id="updateButton" layoutX="90.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleUpdate" text="Update" />
+      <Button id="btnDelete" fx:id="deleteButton" layoutX="270.0" layoutY="409.0" mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
+      <Button fx:id="findButton" layoutX="398.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleFindById" text="Find by ID" />
+      <TextField fx:id="searchId" layoutX="398.0" layoutY="308.0" />
+      <TextField fx:id="searchResult" editable="false" layoutX="398.0" layoutY="394.0" />
    </children>
 </AnchorPane>

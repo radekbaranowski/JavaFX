@@ -3,10 +3,13 @@ package com.contactmanager.app; /**
  */
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class ContactManager extends Application {
 
@@ -25,5 +28,14 @@ public class ContactManager extends Application {
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.show();
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                System.out.println("Stage is closing");
+                primaryStage.close();
+                System.exit(0);
+            }
+        });
+
+
     }
 }

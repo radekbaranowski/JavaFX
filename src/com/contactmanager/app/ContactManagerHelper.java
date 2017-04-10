@@ -31,6 +31,9 @@ public class ContactManagerHelper implements Initializable {
     @FXML ListView contactList;
     @FXML TextInputControl ID;
     @FXML Label statusLabel;
+    @FXML TextInputControl searchId;
+    @FXML TextInputControl searchResult;
+
 
     private ContactService contactService=new ContactServiceImpl();
 
@@ -48,6 +51,32 @@ public class ContactManagerHelper implements Initializable {
              contactService.add(new Contact(nameInput.getText(),surnameInput.getText(),phoneInput.getText()));
             populateList();
         }
+    }
+
+    @FXML protected void handleUpdate(ActionEvent e){
+        if (nameInput.getText().isEmpty() || surnameInput.getText().isEmpty() || phoneInput.getText().isEmpty()){
+            statusLabel.setText("Data incomplete");
+        } else {
+            statusLabel.setText("Trying to update");
+            statusLabel.setText(String.valueOf(contactList.getEditingIndex()));
+            contactService.update(contactService.findById(1));
+            populateList();
+        }
+    }
+
+    @FXML protected void handleDelete(ActionEvent e){
+        if (nameInput.getText().isEmpty() || surnameInput.getText().isEmpty() || phoneInput.getText().isEmpty()){
+            statusLabel.setText("Not implemented");
+        } else {
+            statusLabel.setText("Not implemented");
+            contactService.delete(contactService.findById(1));
+            populateList();
+        }
+    }
+
+    @FXML protected void handleFindById(ActionEvent e){
+        Contact sc = contactService.findById(Integer.parseInt(searchId.getText()));
+        searchResult.setText(sc.getName()+ " " + sc.getSurname());
     }
 
     public void populateList(){
