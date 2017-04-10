@@ -12,4 +12,5 @@ public interface ContactService {
     public List<Contact> list();
     public void delete(Contact c);
     public void update(Contact c);
+    public Contact findById(int id);
 }

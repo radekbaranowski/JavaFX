@@ -26,4 +26,5 @@ public class ContactServiceImpl implements ContactService{
     public void update(Contact c){
         contactDAO.updateContact(c);
     };
+    public Contact findById(int id) {return contactDAO.findById(id);};
 }
